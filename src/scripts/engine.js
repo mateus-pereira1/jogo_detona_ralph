@@ -27,10 +27,27 @@ function countDown(){
     }
 }
 
-function playSound(audioName){
-    let audio = new Audio(`./src/songs/hit.m4a`);
-    audio.volume = 0.2;
-    audio.play();
+function playSoundHit(audioName){
+    let audioHit = new Audio(`./src/songs/hit.m4a`);
+    audioHit.volume = 0.2;
+    audioHit.play();
+}
+
+function playSoundTheme(){
+    let audioTheme = new Audio(`./src/songs/theme.mp3`);
+    audioTheme.volume = 0.2;
+    audioTheme.play();
+}
+
+function playSoundWin(){
+    let audioWin = new Audio(`./src/songs/wingame.mp3`);
+    audioWin.volume = 0.2;
+    audioWin.play();
+}
+
+function playSoundGameOver(){
+    let audioGameOver = new Audio(`./src/songs/gameover.mp3`);
+    audioGameOver.play();
 }
 
 function randomSquare(){
@@ -54,7 +71,7 @@ function addListenerHitBox(){
             state.values.result++
             state.view.socre.textContent = state.values.result;
             state.values.hitPosition = null;
-            playSound("hit");
+            playSoundHit("hit");
             
             
            }
@@ -64,12 +81,30 @@ function addListenerHitBox(){
 
 function resetGame(){
     alert("Game Over! O seu resultado foi: "+state.values.result);
-    location.reload();
+    if(state.values.result >= 5)
+    {
+        playSoundWin();
+        alert("Parabéns! Você derrotou o Boss e conseguiu um resultado de "+state.values.result+" derrotando o boss!")
+        setTimeout(() => {
+            location.reload();
+        }, 7000);
+    }
+    else
+    {
+        playSoundGameOver();
+        alert("Infelizmente você perdeu para o Boss!");
+        setTimeout(() => {
+            location.reload();
+        }, 7000);
+    }
+    
+    
 }
 
 function main(){
     moveEnemy();
     addListenerHitBox();
+    playSoundTheme();
 }
 
 main();
