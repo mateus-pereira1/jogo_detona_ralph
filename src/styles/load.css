@@ -1,0 +1,27 @@
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/wall.png");
+}
+
+nav 
+{
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+button
+{
+
+    font-size: 1rem;
+    border: 2px solid rgb(104, 28, 28);
+    border-radius: 15px;
+    width: 20rem;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
